@@ -97,6 +97,18 @@ guessFun2 'a'
 guessFun2 'b'
 guessFun2 'k'
 
+// 高阶函数3：可以将函数存储在数据结构中
+
+// 元组存储 类型必须相同 存储函数时，函数定义必须相同
+let funTuple = (square, fun n -> n * n)
+
+System.Console.WriteLine(funTuple)
+
+// 列表存储 类型可以不同
+let funList = [square,anInt,10, fun n -> n * n]
+
+System.Console.WriteLine(funList)
+
 (* 咖喱函数(利用f#隐式计算，简便多个参数使用多个函数的情况) *)
 System.Console.WriteLine("\n咖喱函数阶段")
 
@@ -124,6 +136,19 @@ let playGame2 = guessFunSimple 'k'
 playGame2 'c'
 playGame2 'd'
 playGame2 'k'
+
+(* 标识符和函数定义是可互换的 *)
+System.Console.WriteLine("\n标识符和函数定义是可互换的")
+
+let isNegative = fun n -> n < 10
+
+let num = 20
+
+// 标识符使用
+System.Console.WriteLine(fun1 isNegative num)
+
+// 函数定义来代替
+System.Console.WriteLine((fun op arg -> op arg) (fun n -> n < 10) num)
 
 
 (*[<EntryPoint>]
